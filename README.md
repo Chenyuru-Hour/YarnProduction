@@ -3,7 +3,7 @@
 
 ## 项目简介
 
-本项目是一个部署在本地 Windows 电脑上的工业数据监控系统，用于实时采集 16 台取纱机（每台包含多个台位）的生产数据（取纱机编号、台位、纱卷重量），实现数据持久化存储、历史查询与 Excel 导出，并提供实时看板动态展示当前重量与当日累计产能。
+本项目是一个部署在本地 Windows 电脑上的工业数据监控系统，用于实时采集 16 台取纱机（每台包含多个台位）的生产数据（取纱机编号、台位、纱卷重量），实现数据持久化存储、历史查询与 Excel 导出，并提供实时看板动态展示当前重量、当日累计重量与累计次数。
 
 系统采用 **分离式架构**，将后台数据采集与前端应用解耦，保证采集服务 7×24 小时稳定运行，同时便于独立维护与扩展。
 
@@ -31,7 +31,7 @@ YarnProduction/
 ├── README.md
 ├── scripts/
 │   └── sql/
-│      └──YarnProduction.sql
+│      └── YarnProduction_CreateDatabase.sql
 ├── docs/
 │   ├── deployment.md
 │   └── SRS.md
@@ -74,7 +74,7 @@ YarnProduction/
 - 通过 Redis Pub/Sub 发布实时数据（或直接通过 SignalR 推送，推荐使用 Redis Pub/Sub 解耦）
 
 ### 2. 实时看板（Web 前端）
-- 展示所有机台/台位的当前重量与当日累计产能
+- 展示所有机台/台位的当前重量、当日累计重量与累计次数
 - 通过 SignalR 接收实时更新（数据源自 Redis）
 - 支持初始数据加载（从 Redis 或 API 获取）
 
@@ -170,7 +170,7 @@ New-Service -Name "YarnMonitorWorker" -BinaryPathName "C:\publish\worker\YarnMon
 
 1. **Worker** 采集到数据后：
    - 写入 SQL Server 主表
-   - 更新 Redis（最新重量、当日累计）
+   - 更新 Redis（最新重量、当日累计重量与累计次数）
    - 向 Redis 频道 `realtime:data` 发布原始数据（JSON 格式）
 
 2. **Web** 端：
