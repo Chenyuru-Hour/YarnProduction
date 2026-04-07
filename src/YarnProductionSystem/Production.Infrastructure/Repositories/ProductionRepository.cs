@@ -1,6 +1,5 @@
 ﻿using Production.Core.DTOs;
 using Microsoft.EntityFrameworkCore;
-using Production.Core.DTOs;
 using Production.Core.Entities;
 using Production.Core.Interfaces;
 using Production.Infrastructure.Data;
