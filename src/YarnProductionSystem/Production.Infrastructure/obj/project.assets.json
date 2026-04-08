@@ -913,6 +913,19 @@
           }
         }
       },
+      "S7netplus/0.20.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/S7.Net.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/S7.Net.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "StackExchange.Redis/2.7.27": {
         "type": "package",
         "dependencies": {
@@ -2990,6 +3003,31 @@
         "pipelines.sockets.unofficial.nuspec"
       ]
     },
+    "S7netplus/0.20.0": {
+      "sha512": "XAubZ076bhWHQZlnBkzwQO4WxqF5ofwhrkDxfBhGbeD1JC1jBDn3EbWIqMLW6+G0RsxzxirSjLERCQZPfjwGdw==",
+      "type": "package",
+      "path": "s7netplus/0.20.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/S7.Net.dll",
+        "lib/net452/S7.Net.xml",
+        "lib/net462/S7.Net.dll",
+        "lib/net462/S7.Net.xml",
+        "lib/net5.0/S7.Net.dll",
+        "lib/net5.0/S7.Net.xml",
+        "lib/net6.0/S7.Net.dll",
+        "lib/net6.0/S7.Net.xml",
+        "lib/net7.0/S7.Net.dll",
+        "lib/net7.0/S7.Net.xml",
+        "lib/netstandard1.3/S7.Net.dll",
+        "lib/netstandard1.3/S7.Net.xml",
+        "lib/netstandard2.0/S7.Net.dll",
+        "lib/netstandard2.0/S7.Net.xml",
+        "s7netplus.0.20.0.nupkg.sha512",
+        "s7netplus.nuspec"
+      ]
+    },
     "StackExchange.Redis/2.7.27": {
       "sha512": "Uqc2OQHglqj9/FfGQ6RkKFkZfHySfZlfmbCl+hc+u2I/IqunfelQ7QJi7ZhvAJxUtu80pildVX6NPLdDaUffOw==",
       "type": "package",
@@ -4197,6 +4235,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.8",
       "Microsoft.Extensions.Caching.StackExchangeRedis >= 8.0.8",
       "Production.Core >= 1.0.0",
+      "S7netplus >= 0.20.0",
       "StackExchange.Redis >= 2.7.27"
     ]
   },
@@ -4271,6 +4310,10 @@
           "Microsoft.Extensions.Caching.StackExchangeRedis": {
             "target": "Package",
             "version": "[8.0.8, )"
+          },
+          "S7netplus": {
+            "target": "Package",
+            "version": "[0.20.0, )"
           },
           "StackExchange.Redis": {
             "target": "Package",

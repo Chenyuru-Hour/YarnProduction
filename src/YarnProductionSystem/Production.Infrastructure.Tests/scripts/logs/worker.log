@@ -1,0 +1,444 @@
+从 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Worker\Properties\launchSettings.json 使用启动设置...
+正在生成...
+info: Production.Infrastructure.PlcDrivers.SimulatedPlcDriver[0]
+      SimulatedPlcDriver 启动成功，设备数=16。
+info: Production.Worker.Worker[0]
+      Worker 已启动，采集周期 1000ms，频道 realtime:data
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Worker
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (32ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (14ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (15ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (17ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p5='?' (Size = 50), @p6='?' (Size = 50), @p7='?' (DbType = DateTime2), @p8='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Size = 50), @p11='?' (DbType = DateTime2), @p12='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p13='?' (Size = 50), @p14='?' (Size = 50), @p15='?' (DbType = DateTime2), @p16='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p17='?' (Size = 50), @p18='?' (Size = 50), @p19='?' (DbType = DateTime2), @p20='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p21='?' (Size = 50), @p22='?' (Size = 50), @p23='?' (DbType = DateTime2), @p24='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p25='?' (Size = 50), @p26='?' (Size = 50), @p27='?' (DbType = DateTime2), @p28='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p29='?' (Size = 50), @p30='?' (Size = 50), @p31='?' (DbType = DateTime2), @p32='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p33='?' (Size = 50), @p34='?' (Size = 50), @p35='?' (DbType = DateTime2), @p36='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p37='?' (Size = 50), @p38='?' (Size = 50), @p39='?' (DbType = DateTime2), @p40='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p41='?' (Size = 50), @p42='?' (Size = 50), @p43='?' (DbType = DateTime2), @p44='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p45='?' (Size = 50), @p46='?' (Size = 50), @p47='?' (DbType = DateTime2), @p48='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p49='?' (Size = 50), @p50='?' (Size = 50), @p51='?' (DbType = DateTime2), @p52='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p53='?' (Size = 50), @p54='?' (Size = 50), @p55='?' (DbType = DateTime2), @p56='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p57='?' (Size = 50), @p58='?' (Size = 50), @p59='?' (DbType = DateTime2), @p60='?' (Precision = 18) (Scale = 3) (DbType = Decimal), @p61='?' (Size = 50), @p62='?' (Size = 50), @p63='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      MERGE [ProductionRecords] USING (
+      VALUES (@p0, @p1, @p2, @p3, 0),
+      (@p4, @p5, @p6, @p7, 1),
+      (@p8, @p9, @p10, @p11, 2),
+      (@p12, @p13, @p14, @p15, 3),
+      (@p16, @p17, @p18, @p19, 4),
+      (@p20, @p21, @p22, @p23, 5),
+      (@p24, @p25, @p26, @p27, 6),
+      (@p28, @p29, @p30, @p31, 7),
+      (@p32, @p33, @p34, @p35, 8),
+      (@p36, @p37, @p38, @p39, 9),
+      (@p40, @p41, @p42, @p43, 10),
+      (@p44, @p45, @p46, @p47, 11),
+      (@p48, @p49, @p50, @p51, 12),
+      (@p52, @p53, @p54, @p55, 13),
+      (@p56, @p57, @p58, @p59, 14),
+      (@p60, @p61, @p62, @p63, 15)) AS i ([BobbinWeight], [MachineId], [StationId], [Timestamp], _Position) ON 1=0
+      WHEN NOT MATCHED THEN
+      INSERT ([BobbinWeight], [MachineId], [StationId], [Timestamp])
+      VALUES (i.[BobbinWeight], i.[MachineId], i.[StationId], i.[Timestamp])
+      OUTPUT INSERTED.[Id], i._Position;
+info: Production.Worker.Worker[0]
+      批次完成：快照总数=16, 入库成功=16, 无效=0, 缓存成功=16, 缓存失败=0

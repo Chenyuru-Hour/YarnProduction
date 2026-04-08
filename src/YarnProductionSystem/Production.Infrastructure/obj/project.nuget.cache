@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7WUYJnHOdaE=",
+  "dgSpecHash": "ke1WpeB1U5k=",
   "success": true,
   "projectFilePath": "E:\\WorkProject\\国际复合\\03_开发\\YarnProduction\\src\\YarnProductionSystem\\Production.Infrastructure\\Production.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -47,6 +47,7 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\s7netplus\\0.20.0\\s7netplus.0.20.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\stackexchange.redis\\2.7.27\\stackexchange.redis.2.7.27.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",

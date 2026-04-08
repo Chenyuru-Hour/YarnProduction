@@ -697,6 +697,14 @@
           }
         }
       },
+      "S7netplus/0.20.0": {
+        "runtime": {
+          "lib/net7.0/S7.Net.dll": {
+            "assemblyVersion": "0.20.0.0",
+            "fileVersion": "0.20.0.0"
+          }
+        }
+      },
       "StackExchange.Redis/2.7.27": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
@@ -927,6 +935,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.8",
           "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.8",
           "Production.Core": "1.0.0",
+          "S7netplus": "0.20.0",
           "StackExchange.Redis": "2.7.27"
         },
         "runtime": {
@@ -1321,6 +1330,13 @@
       "sha512": "sha512-zG2FApP5zxSx6OcdJQLbZDk2AVlN2BNQD6MorwIfV6gVj0RRxWPEp2LXAxqDGZqeNV1Zp0BNPcNaey/GXmTdvQ==",
       "path": "pipelines.sockets.unofficial/2.2.8",
       "hashPath": "pipelines.sockets.unofficial.2.2.8.nupkg.sha512"
+    },
+    "S7netplus/0.20.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XAubZ076bhWHQZlnBkzwQO4WxqF5ofwhrkDxfBhGbeD1JC1jBDn3EbWIqMLW6+G0RsxzxirSjLERCQZPfjwGdw==",
+      "path": "s7netplus/0.20.0",
+      "hashPath": "s7netplus.0.20.0.nupkg.sha512"
     },
     "StackExchange.Redis/2.7.27": {
       "type": "package",

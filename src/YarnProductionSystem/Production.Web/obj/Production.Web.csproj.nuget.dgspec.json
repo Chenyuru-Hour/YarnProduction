@@ -137,6 +137,10 @@
               "target": "Package",
               "version": "[8.0.8, )"
             },
+            "S7netplus": {
+              "target": "Package",
+              "version": "[0.20.0, )"
+            },
             "StackExchange.Redis": {
               "target": "Package",
               "version": "[2.7.27, )"
@@ -214,6 +218,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

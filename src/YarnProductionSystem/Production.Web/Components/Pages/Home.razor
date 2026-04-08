@@ -1,7 +1,146 @@
 ﻿@page "/"
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.SignalR.Client
+@using Production.Web.Services
+@implements IAsyncDisposable
+@inject DashboardSnapshotService SnapshotService
+@inject NavigationManager NavigationManager
 
-<PageTitle>Home</PageTitle>
+<PageTitle>实时看板</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="dashboard-page">
+    <div class="dashboard-header">
+        <div>
+            <h1>实时生产看板</h1>
+            <p>16 台取纱机 · Redis 首屏快照 + SignalR 增量更新</p>
+        </div>
+        <span class="health-pill @GetHealthClass()">@_healthText</span>
+    </div>
 
-Welcome to your new app.
+    <div class="summary-grid">
+        <section class="summary-card">
+            <div class="summary-title">当前总产量（纱卷个数）</div>
+            <div class="summary-value">@_totalCount</div>
+        </section>
+        <section class="summary-card">
+            <div class="summary-title">当前总重量（kg）</div>
+            <div class="summary-value">@_totalWeight.ToString("F3")</div>
+        </section>
+    </div>
+
+    @if (_isLoading)
+    {
+        <p class="loading-text">正在加载首屏快照...</p>
+    }
+    else
+    {
+        <div class="machine-grid">
+            @foreach (var machine in _machines)
+            {
+                <article class="machine-card">
+                    <div class="machine-title">机台 @machine.MachineId · 台位 @machine.StationId</div>
+                    <div class="metric-row">
+                        <span class="metric-label">最新重量</span>
+                        <span class="metric-value">@machine.LatestWeight.ToString("F3") kg</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">当日累计重量</span>
+                        <span class="metric-value">@machine.DailyTotalWeight.ToString("F3") kg</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">当日累计次数</span>
+                        <span class="metric-value">@machine.DailyTotalCount</span>
+                    </div>
+                    <div class="machine-time">最近更新：@FormatTime(machine.LastUpdatedAt)</div>
+                </article>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private readonly List<DashboardMachineCard> _machines = new();
+    private HubConnection? _hubConnection;
+    private bool _isLoading = true;
+    private decimal _totalWeight;
+    private long _totalCount;
+    private string _healthText = "连接中";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var snapshot = await SnapshotService.LoadCurrentSnapshotAsync();
+        _machines.Clear();
+        _machines.AddRange(snapshot.Machines.OrderBy(item => ParseMachineId(item.MachineId)));
+        _totalWeight = snapshot.TotalWeight;
+        _totalCount = snapshot.TotalCount;
+        _isLoading = false;
+
+        _hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/hubs/production"))
+            .WithAutomaticReconnect()
+            .Build();
+
+        _hubConnection.On<DashboardUpdateMessage>("dashboard:update", async update =>
+        {
+            ApplyUpdate(update);
+            await InvokeAsync(StateHasChanged);
+        });
+
+        _hubConnection.On<string>("dashboard:health", async status =>
+        {
+            _healthText = status;
+            await InvokeAsync(StateHasChanged);
+        });
+
+        await _hubConnection.StartAsync();
+        _healthText = "已连接";
+    }
+
+    private void ApplyUpdate(DashboardUpdateMessage update)
+    {
+        var index = _machines.FindIndex(item => item.MachineId == update.Machine.MachineId && item.StationId == update.Machine.StationId);
+        if (index >= 0)
+        {
+            _machines[index] = update.Machine;
+        }
+        else
+        {
+            _machines.Add(update.Machine);
+            _machines.Sort((left, right) => ParseMachineId(left.MachineId).CompareTo(ParseMachineId(right.MachineId)));
+        }
+
+        _totalWeight = update.TotalWeight;
+        _totalCount = update.TotalCount;
+    }
+
+    private static int ParseMachineId(string machineId)
+    {
+        return int.TryParse(machineId, out var parsedMachineId) ? parsedMachineId : int.MaxValue;
+    }
+
+    private string GetHealthClass()
+    {
+        if (string.Equals(_healthText, "已连接", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(_healthText, "ready", StringComparison.OrdinalIgnoreCase))
+        {
+            return "healthy";
+        }
+
+        return "pending";
+    }
+
+    private static string FormatTime(DateTime? timestamp)
+    {
+        return timestamp.HasValue ? timestamp.Value.ToString("HH:mm:ss") : "--";
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_hubConnection is null)
+        {
+            return;
+        }
+
+        await _hubConnection.DisposeAsync();
+    }
+}

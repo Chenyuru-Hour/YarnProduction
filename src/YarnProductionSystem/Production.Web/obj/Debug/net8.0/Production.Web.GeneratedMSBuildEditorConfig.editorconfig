@@ -24,16 +24,8 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WorkProject/国际复合/03_开发/YarnProduction/src/YarnProductionSystem/Production.Web/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/WorkProject/国际复合/03_开发/YarnProduction/src/YarnProductionSystem/Production.Web/Components/Pages/Error.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/WorkProject/国际复合/03_开发/YarnProduction/src/YarnProductionSystem/Production.Web/Components/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+[E:/WorkProject/国际复合/03_开发/YarnProduction/src/YarnProductionSystem/Production.Web/Components/Pages/DataManage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEYXRhTWFuYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/WorkProject/国际复合/03_开发/YarnProduction/src/YarnProductionSystem/Production.Web/Components/Pages/Weather.razor]
@@ -55,3 +47,7 @@ build_metadata.AdditionalFiles.CssScope = b-0rh5actv1x
 [E:/WorkProject/国际复合/03_开发/YarnProduction/src/YarnProductionSystem/Production.Web/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-fowscmazar
+
+[E:/WorkProject/国际复合/03_开发/YarnProduction/src/YarnProductionSystem/Production.Web/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-mzbn4iqtwd

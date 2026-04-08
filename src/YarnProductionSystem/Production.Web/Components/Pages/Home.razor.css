@@ -1,0 +1,141 @@
+.dashboard-page {
+    background: #f3f2f1;
+    border-radius: 12px;
+    padding: 20px;
+    min-height: calc(100vh - 150px);
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.dashboard-header h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: #201f1e;
+}
+
+.dashboard-header p {
+    margin: 6px 0 0;
+    color: #605e5c;
+}
+
+.health-pill {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.health-pill.healthy {
+    background: #dff6dd;
+    color: #107c10;
+}
+
+.health-pill.pending {
+    background: #fff4ce;
+    color: #8a6a00;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.summary-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #edebe9;
+    padding: 16px;
+}
+
+.summary-title {
+    color: #605e5c;
+    font-size: 0.95rem;
+}
+
+.summary-value {
+    margin-top: 8px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #004578;
+}
+
+.loading-text {
+    color: #605e5c;
+}
+
+.machine-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.machine-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+    border: 1px solid #edebe9;
+    padding: 14px;
+}
+
+.machine-title {
+    color: #323130;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.metric-label {
+    color: #605e5c;
+}
+
+.metric-value {
+    color: #201f1e;
+    font-weight: 600;
+}
+
+.machine-time {
+    margin-top: 8px;
+    color: #8a8886;
+    font-size: 0.82rem;
+}
+
+@media (max-width: 1200px) {
+    .machine-grid {
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .machine-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .machine-grid {
+        grid-template-columns: 1fr;
+    }
+}

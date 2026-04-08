@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3BjnSz/zaSg=",
+  "dgSpecHash": "rfJdDJ4LIhk=",
   "success": true,
   "projectFilePath": "E:\\WorkProject\\国际复合\\03_开发\\YarnProduction\\src\\YarnProductionSystem\\Production.Worker\\Production.Worker.csproj",
   "expectedPackageFiles": [
@@ -58,6 +58,7 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\s7netplus\\0.20.0\\s7netplus.0.20.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\stackexchange.redis\\2.7.27\\stackexchange.redis.2.7.27.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",

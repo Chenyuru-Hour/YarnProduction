@@ -30,7 +30,6 @@ E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Pr
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\obj\Debug\net8.0\staticwebassets.build.json.cache
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\obj\Debug\net8.0\staticwebassets.development.json
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\obj\Debug\net8.0\Producti.B04CAFB6.Up2Date
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\obj\Debug\net8.0\Production.Web.dll
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\obj\Debug\net8.0\refint\Production.Web.dll
@@ -81,3 +80,14 @@ E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Pr
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\S7.Net.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Connections.Client.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Connections.Common.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Client.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Common.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\bin\Debug\net8.0\Microsoft.Extensions.Features.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\obj\Debug\net8.0\scopedcss\Components\Pages\Home.razor.rz.scp.css
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
