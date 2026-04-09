@@ -166,13 +166,8 @@ return { newWeight, newCount }";
                 countIncrement
             });
 
-        if (scriptResult.Type != ResultType.MultiBulk)
-        {
-            throw new InvalidOperationException("Redis 原子累加返回格式异常。");
-        }
-
-        var resultItems = (RedisResult[])scriptResult;
-        if (resultItems.Length < 2)
+        var resultItems = (RedisResult[]?)scriptResult;
+        if (resultItems is null || resultItems.Length < 2)
         {
             throw new InvalidOperationException("Redis 原子累加返回项不足。");
         }
@@ -263,7 +258,7 @@ return { newWeight, newCount }";
         }
 
         var messageJson = JsonSerializer.Serialize(dto);
-        await _subscriber.PublishAsync(channel, messageJson);
+        await _subscriber.PublishAsync(RedisChannel.Literal(channel), messageJson);
     }
 
     /// <summary>
@@ -300,9 +295,9 @@ return { newWeight, newCount }";
             throw new ArgumentNullException(nameof(onMessage));
         }
 
-        await _subscriber.SubscribeAsync(channel, (receivedChannel, redisValue) =>
+        await _subscriber.SubscribeAsync(RedisChannel.Literal(channel), (receivedChannel, redisValue) =>
         {
-            var handlingTask = HandleRealtimeMessageAsync(redisValue, onMessage);
+            _ = HandleRealtimeMessageAsync(redisValue, onMessage);
         });
 
         if (!cancellationToken.CanBeCanceled)
@@ -311,9 +306,9 @@ return { newWeight, newCount }";
         }
 
         var completionSource = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
-        cancellationToken.Register(() =>
+        using var cancellationRegistration = cancellationToken.Register(() =>
         {
-            _ = _subscriber.UnsubscribeAsync(channel);
+            _ = _subscriber.UnsubscribeAsync(RedisChannel.Literal(channel));
             completionSource.TrySetCanceled(cancellationToken);
         });
 

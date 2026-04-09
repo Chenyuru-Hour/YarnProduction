@@ -10,7 +10,7 @@ using System.Globalization;
 namespace Production.Infrastructure.PlcDrivers
 {
     /// <summary>
-    /// 西门子 PLC 驱动实现。
+    /// 西门子 PLC 驱动实现，负责连接、读取与事件转发。
     /// </summary>
     /// <example>
     /// <code>
@@ -29,15 +29,18 @@ namespace Production.Infrastructure.PlcDrivers
         private bool _started;
         private bool _disposed;
 
+        /// <summary>
+        /// 当读取到一条生产记录时触发。
+        /// </summary>
         public event Func<ProductionRecordDto, Task>? OnDataReceived;
 
         /// <summary>
-        /// 初始化 <see cref="SiemensPlcDriver"/>。
+        /// 初始化 <see cref="SiemensPlcDriver"/> 实例并校验配置。
         /// </summary>
-        /// <param name="options">西门子 PLC 配置选项。</param>
+        /// <param name="options">PLC 驱动配置选项。</param>
         /// <param name="logger">日志记录器。</param>
-        /// <exception cref="ArgumentNullException">依赖为空时抛出。</exception>
-        /// <exception cref="ArgumentException">配置非法时抛出。</exception>
+        /// <exception cref="ArgumentNullException">当 <paramref name="options"/> 或 <paramref name="logger"/> 为 null 时抛出。</exception>
+        /// <exception cref="ArgumentException">当配置内容不合法时抛出。</exception>
         /// <example>
         /// <code>
         /// var driver = new SiemensPlcDriver(options, logger);
@@ -56,10 +59,12 @@ namespace Production.Infrastructure.PlcDrivers
         }
 
         /// <summary>
-        /// 启动 PLC 驱动并建立连接。
+        /// 启动驱动并确保 PLC 连接可用。
         /// </summary>
         /// <param name="cancellationToken">取消令牌。</param>
-        /// <returns>异步任务。</returns>
+        /// <returns>表示启动过程的异步任务。</returns>
+        /// <exception cref="ObjectDisposedException">当实例已释放时抛出。</exception>
+        /// <exception cref="OperationCanceledException">当取消令牌触发时抛出。</exception>
         /// <example>
         /// <code>
         /// await driver.StartAsync(cancellationToken);
@@ -80,9 +85,9 @@ namespace Production.Infrastructure.PlcDrivers
         }
 
         /// <summary>
-        /// 停止驱动并关闭连接。
+        /// 停止驱动并关闭 PLC 连接。
         /// </summary>
-        /// <returns>异步任务。</returns>
+        /// <returns>表示停止过程的异步任务。</returns>
         /// <example>
         /// <code>
         /// await driver.StopAsync();
@@ -112,12 +117,14 @@ namespace Production.Infrastructure.PlcDrivers
         }
 
         /// <summary>
-        /// 读取一次 PLC 快照。
+        /// 读取一批 PLC 快照数据。
         /// </summary>
-        /// <returns>生产记录 DTO 列表。</returns>
+        /// <returns>读取到的生产记录 DTO 集合。</returns>
+        /// <exception cref="ObjectDisposedException">当实例已释放时抛出。</exception>
         /// <example>
         /// <code>
         /// var records = await driver.ReadSnapshotAsync();
+        /// Console.WriteLine(records.Count());
         /// </code>
         /// </example>
         public async Task<IEnumerable<ProductionRecordDto>> ReadSnapshotAsync()
@@ -180,7 +187,7 @@ namespace Production.Infrastructure.PlcDrivers
         }
 
         /// <summary>
-        /// 释放 PLC 驱动资源。
+        /// 释放驱动资源。
         /// </summary>
         /// <example>
         /// <code>

@@ -1,0 +1,12 @@
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\bin\Release\net8.0\Production.Core.deps.json
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\bin\Release\net8.0\Production.Core.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\bin\Release\net8.0\Production.Core.pdb
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\obj\Release\net8.0\Production.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\obj\Release\net8.0\Production.Core.AssemblyInfoInputs.cache
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\obj\Release\net8.0\Production.Core.AssemblyInfo.cs
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\obj\Release\net8.0\Production.Core.csproj.CoreCompileInputs.cache
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\obj\Release\net8.0\Production.Core.sourcelink.json
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\obj\Release\net8.0\Production.Core.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\obj\Release\net8.0\refint\Production.Core.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\obj\Release\net8.0\Production.Core.pdb
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Core\obj\Release\net8.0\ref\Production.Core.dll

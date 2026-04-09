@@ -1,8 +1,8 @@
 namespace Production.Infrastructure.PlcDrivers.Models
 {
     /// <summary>
-    /// PLC 读点映射定义。
-    /// 每个读点对应一个机台与台位的重量读取地址。
+    /// PLC 读取点映射定义。
+    /// 每个读取点对应机台/工位与 PLC 地址信息。
     /// </summary>
     /// <example>
     /// <code>
@@ -20,22 +20,41 @@ namespace Production.Infrastructure.PlcDrivers.Models
     /// </example>
     public class PlcReadPoint
     {
+        /// <summary>
+        /// 机台编号。
+        /// </summary>
         public string MachineId { get; set; } = string.Empty;
 
+        /// <summary>
+        /// 工位编号。
+        /// </summary>
         public string StationId { get; set; } = string.Empty;
 
+        /// <summary>
+        /// 数据块编号（DB）。
+        /// </summary>
         public int Db { get; set; }
 
+        /// <summary>
+        /// 起始字节偏移。
+        /// </summary>
         public int StartByte { get; set; }
 
+        /// <summary>
+        /// 变量类型（如 Real、Int16、Int32、Byte）。
+        /// </summary>
         public string VarType { get; set; } = "Real";
 
+        /// <summary>
+        /// 读取长度。
+        /// </summary>
         public int Length { get; set; } = 1;
 
         /// <summary>
-        /// 校验当前读点配置并在非法时抛出异常。
+        /// 校验当前读取点配置并在非法时抛出异常。
         /// </summary>
-        /// <exception cref="ArgumentException">当字段值无效时抛出。</exception>
+        /// <returns>无返回值。</returns>
+        /// <exception cref="ArgumentException">当字段值为空或越界时抛出。</exception>
         /// <example>
         /// <code>
         /// var point = new PlcReadPoint { MachineId = "1", StationId = "1", Db = 1, StartByte = 0, VarType = "Real", Length = 1 };

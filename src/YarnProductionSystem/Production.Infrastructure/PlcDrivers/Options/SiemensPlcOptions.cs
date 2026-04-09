@@ -4,7 +4,7 @@ namespace Production.Infrastructure.PlcDrivers.Options
 {
     /// <summary>
     /// 西门子 PLC 驱动配置。
-    /// 对应配置节：PlcDriver:Parameters
+    /// 对应配置节：<c>PlcDriver:Parameters</c>。
     /// </summary>
     /// <example>
     /// <code>
@@ -17,33 +17,67 @@ namespace Production.Infrastructure.PlcDrivers.Options
     ///     Port = 102,
     ///     ConnectTimeoutMs = 3000,
     ///     RetryCount = 3,
-    ///     ReadPoints = new List&lt;PlcReadPoint&gt; { new() { MachineId = "1", StationId = "1", Db = 1, StartByte = 0, VarType = "Real", Length = 1 } }
+    ///     ReadPoints = new List&lt;PlcReadPoint&gt;
+    ///     {
+    ///         new() { 
+    ///         MachineId = "1", 
+    ///         StationId = "1", 
+    ///         Db = 1, 
+    ///         StartByte = 0, 
+    ///         VarType = "Real", 
+    ///         Length = 1 }
+    ///     }
     /// };
     /// options.ValidateAndThrow();
     /// </code>
     /// </example>
     public class SiemensPlcOptions
     {
+        /// <summary>
+        /// PLC 设备 IP 地址。
+        /// </summary>
         public string IpAddress { get; set; } = string.Empty;
 
+        /// <summary>
+        /// 机架号（Rack）。
+        /// </summary>
         public short Rack { get; set; }
 
+        /// <summary>
+        /// 槽位号（Slot）。
+        /// </summary>
         public short Slot { get; set; }
 
+        /// <summary>
+        /// CPU 类型（如 S71500）。
+        /// </summary>
         public string CpuType { get; set; } = "S71500";
 
+        /// <summary>
+        /// 通信端口，默认 102。
+        /// </summary>
         public int Port { get; set; } = 102;
 
+        /// <summary>
+        /// PLC 读取点集合。
+        /// </summary>
         public List<PlcReadPoint> ReadPoints { get; set; } = new();
 
+        /// <summary>
+        /// 连接超时（毫秒）。
+        /// </summary>
         public int ConnectTimeoutMs { get; set; } = 3000;
 
+        /// <summary>
+        /// 重试次数。
+        /// </summary>
         public int RetryCount { get; set; } = 3;
 
         /// <summary>
-        /// 校验配置并在非法时抛出明确异常。
+        /// 校验配置并在非法时抛出异常。
         /// </summary>
-        /// <exception cref="ArgumentException">参数无效时抛出。</exception>
+        /// <returns>无返回值。</returns>
+        /// <exception cref="ArgumentException">当配置项为空、越界或读取点非法时抛出。</exception>
         /// <example>
         /// <code>
         /// options.ValidateAndThrow();

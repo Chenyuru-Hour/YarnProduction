@@ -1,0 +1,73 @@
+.data-manage-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.data-manage-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.data-manage-header p {
+    margin: 0.5rem 0 0;
+    color: #6b7280;
+}
+
+.card-block {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
+}
+
+.filter-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-weight: 600;
+}
+
+.filter-grid input {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 0.45rem 0.6rem;
+    font-weight: 400;
+}
+
+.action-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.status-info {
+    color: #0f766e;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+}
+
+.status-error {
+    color: #b91c1c;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.pagination-row {
+    margin-top: 0.75rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+}

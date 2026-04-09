@@ -68,6 +68,7 @@
 
     protected override async Task OnInitializedAsync()
     {
+        // 实时链路第 5 段（显示）：先加载 Redis 快照用于首屏渲染。
         var snapshot = await SnapshotService.LoadCurrentSnapshotAsync();
         _machines.Clear();
         _machines.AddRange(snapshot.Machines.OrderBy(item => ParseMachineId(item.MachineId)));
@@ -75,6 +76,7 @@
         _totalCount = snapshot.TotalCount;
         _isLoading = false;
 
+        // 初始化 SignalR 连接，接收 Redis 转发过来的增量消息。
         _hubConnection = new HubConnectionBuilder()
             .WithUrl(NavigationManager.ToAbsoluteUri("/hubs/production"))
             .WithAutomaticReconnect()
@@ -82,12 +84,14 @@
 
         _hubConnection.On<DashboardUpdateMessage>("dashboard:update", async update =>
         {
+            // 增量更新机台卡片和总计数据。
             ApplyUpdate(update);
             await InvokeAsync(StateHasChanged);
         });
 
         _hubConnection.On<string>("dashboard:health", async status =>
         {
+            // 更新链路健康状态展示（连接中/已连接/ready）。
             _healthText = status;
             await InvokeAsync(StateHasChanged);
         });

@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.8" />
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.25" />
     <ProjectReference Include="..\Production.Core\Production.Core.csproj" />
     <ProjectReference Include="..\Production.Infrastructure\Production.Infrastructure.csproj" />
   </ItemGroup>

@@ -1,12 +1,11 @@
 using Production.Core.DTOs;
-using Production.Core.DTOs;
 using Production.Core.Entities;
 using Production.Core.Interfaces;
 
 namespace Production.Worker
 {
     /// <summary>
-    /// 生产采集后台服务：采集 PLC 数据并完成入库、缓存与实时发布。
+    /// 后台采集服务：周期读取 PLC 快照，落库后写入实时缓存并发布消息。
     /// </summary>
     /// <example>
     /// 启动后每个采集周期执行：ReadSnapshot -> BulkInsert -> Redis 更新 -> Pub/Sub 发布。
@@ -21,16 +20,19 @@ namespace Production.Worker
         private readonly int _collectIntervalMs;
 
         /// <summary>
-        /// 初始化 <see cref="Worker"/>。
+        /// 初始化 <see cref="Worker"/> 实例。
         /// </summary>
         /// <param name="logger">日志记录器。</param>
-        /// <param name="plcDriver">PLC 驱动。</param>
-        /// <param name="productionRepository">生产记录仓储。</param>
-        /// <param name="realTimeCache">实时缓存服务。</param>
-        /// <param name="configuration">应用配置。</param>
-        /// <exception cref="ArgumentNullException">依赖为空时抛出。</exception>
+        /// <param name="plcDriver">PLC 驱动实现。</param>
+        /// <param name="scopeFactory">作用域工厂，用于每批次创建独立依赖作用域。</param>
+        /// <param name="realTimeCache">实时缓存服务，用于写入最新值、累计值及发布消息。</param>
+        /// <param name="configuration">应用配置，提供采集周期与实时通道配置。</param>
+        /// <exception cref="ArgumentNullException">当任一必需依赖为 null 时抛出。</exception>
         /// <example>
-        /// 由依赖注入创建：services.AddHostedService&lt;Worker&gt;();
+        /// <code>
+        /// // 前置条件：Program.cs 已完成依赖注册
+        /// services.AddHostedService&lt;Worker&gt;();
+        /// </code>
         /// </example>
         public Worker(
             ILogger<Worker> logger,
@@ -57,12 +59,16 @@ namespace Production.Worker
         }
 
         /// <summary>
-        /// 执行后台采集主循环。
+        /// 执行后台主循环，持续处理采集批次直到收到停止信号。
         /// </summary>
-        /// <param name="stoppingToken">停止令牌。</param>
-        /// <returns>异步任务。</returns>
+        /// <param name="stoppingToken">宿主提供的停止令牌。</param>
+        /// <returns>表示后台执行过程的异步任务。</returns>
+        /// <exception cref="OperationCanceledException">当宿主停止并触发取消时抛出。</exception>
         /// <example>
-        /// Worker 每轮执行完整链路：采集 -> 校验 -> 入库 -> 缓存 -> 发布。
+        /// <code>
+        /// // 该方法由 Host 自动调用；集成测试可通过启动 Host 触发
+        /// await host.StartAsync(cancellationToken);
+        /// </code>
         /// </example>
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -73,6 +79,7 @@ namespace Production.Worker
             {
                 while (!stoppingToken.IsCancellationRequested)
                 {
+                    // 实时链路第 1 段：从 PLC 读取并处理一个批次数据。
                     await ProcessBatchAsync(stoppingToken);
                     await Task.Delay(_collectIntervalMs, stoppingToken);
                 }
@@ -138,6 +145,8 @@ namespace Production.Worker
                     return;
                 }
 
+                // 入库与后续处理隔离，确保单批次失败不影响整体稳定性。
+                //scope,创建一个新的作用域来获取仓储实例，确保每批次使用独立的数据库上下文。
                 using var scope = _scopeFactory.CreateScope();
                 var productionRepository = scope.ServiceProvider.GetRequiredService<IProductionRepository>();
                 await productionRepository.BulkInsertAsync(entitiesToInsert, stoppingToken);
@@ -146,6 +155,7 @@ namespace Production.Worker
                 var cacheFailureCount = 0;
                 foreach (var validDto in validDtos)
                 {
+                    // 实时链路第 2 段：写入 Redis 最新值/累计值并发布到 Pub/Sub 频道。
                     var cacheUpdated = await TryProcessRealtimeCacheAsync(validDto, stoppingToken);
                     if (cacheUpdated)
                     {
@@ -190,8 +200,11 @@ namespace Production.Worker
                 stoppingToken.ThrowIfCancellationRequested();
 
                 var dateString = recordDto.Timestamp.ToString("yyyy-MM-dd");
+                // 写入每台机台位的最新重量（用于首屏快照回填）。
                 await _realTimeCache.SetLatestAsync(recordDto.MachineId, recordDto.StationId, recordDto.BobbinWeight);
+                // 原子累加当日重量和次数（用于看板累计统计）。
                 await _realTimeCache.IncrementDailyAggregateAsync(dateString, recordDto.MachineId, recordDto.StationId, recordDto.BobbinWeight, 1);
+                // 发布增量消息，由 Web 侧订阅后转发到 SignalR 客户端。
                 await _realTimeCache.PublishRealtimeAsync(_realtimeChannel, recordDto);
 
                 return true;

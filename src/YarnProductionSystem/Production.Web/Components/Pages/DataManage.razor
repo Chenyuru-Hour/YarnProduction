@@ -1,8 +1,370 @@
 ﻿@page "/data-manage"
+@rendermode InteractiveServer
+@using System.Globalization
+@using Production.Core.DTOs
+@using Production.Web.Services
+@implements IDisposable
+@inject DataManageService DataManageService
+@inject IJSRuntime JSRuntime
+@inject ILogger<DataManage> Logger
 
-<PageTitle>DataManage</PageTitle>
-<h1>数据管理</h1>
+<PageTitle>数据管理</PageTitle>
+
+<div class="data-manage-page">
+    <div class="data-manage-header">
+        <div>
+            <h1>生产数据管理</h1>
+            <p>按时间范围、机台、台位进行查询，并支持按当前筛选条件导出 Excel。</p>
+        </div>
+    </div>
+
+    <section class="card-block filter-card">
+        <div class="filter-grid">
+            <label>
+                <span>开始时间</span>
+                <input type="datetime-local" value="@_startTimeText" @onchange="OnStartTimeChanged" />
+            </label>
+            <label>
+                <span>结束时间</span>
+                <input type="datetime-local" value="@_endTimeText" @onchange="OnEndTimeChanged" />
+            </label>
+            <label>
+                <span>机台</span>
+                <input type="text" maxlength="50" placeholder="例如：1" value="@_machineId" @onchange="OnMachineChanged" />
+            </label>
+            <label>
+                <span>台位</span>
+                <input type="text" maxlength="50" placeholder="例如：1" value="@_stationId" @onchange="OnStationChanged" />
+            </label>
+        </div>
+
+        <div class="action-row">
+            <button class="btn btn-primary" @onclick="QueryFromFirstPageAsync" disabled="@_isLoading">查询</button>
+            <button class="btn btn-secondary" @onclick="ResetAsync" disabled="@_isLoading">重置</button>
+            <button class="btn btn-success" @onclick="ExportAsync" disabled="@_isLoading">导出 Excel</button>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(_statusMessage))
+        {
+            <p class="status-info">@_statusMessage</p>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(_errorMessage))
+        {
+            <p class="status-error">@_errorMessage</p>
+        }
+    </section>
+
+    <section class="card-block result-card">
+        @if (_isLoading)
+        {
+            <p class="status-info">正在加载数据，请稍候...</p>
+        }
+        else if (_pageResult.TotalCount == 0)
+        {
+            <p class="status-info">当前筛选条件下没有数据。</p>
+        }
+        else
+        {
+            <div class="table-wrapper">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>机台</th>
+                            <th>台位</th>
+                            <th>重量 (kg)</th>
+                            <th>时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var serialNumver = (_pageIndex - 1) * PageSize;
+                        }
+                        @foreach (var item in _pageResult.Items)
+                        {
+                            serialNumver++;
+                            <tr>
+                                <td>@serialNumver</td>
+                                <td>@item.MachineId</td>
+                                <td>@item.StationId</td>
+                                <td>@item.BobbinWeight.ToString("F3")</td>
+                                <td>@item.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+
+        <div class="pagination-row">
+            <button class="btn btn-outline-primary" @onclick="PreviousPageAsync" disabled="@(_isLoading || _pageIndex <= 1)">上一页</button>
+            <span>第 @_pageIndex 页 / 共 @TotalPages 页</span>
+            <button class="btn btn-outline-primary" @onclick="NextPageAsync" disabled="@(_isLoading || _pageIndex >= TotalPages)">下一页</button>
+            <span>总记录数：@_pageResult.TotalCount</span>
+        </div>
+    </section>
+</div>
 
 @code {
+    private const int PageSize = 20;
 
+    private static readonly string[] DateTimeLocalFormats =
+    [
+        "yyyy-MM-ddTHH:mm",
+        "yyyy-MM-ddTHH:mm:ss"
+    ];
+
+    private string _startTimeText = string.Empty;
+    private string _endTimeText = string.Empty;
+    private string _machineId = string.Empty;
+    private string _stationId = string.Empty;
+
+    private int _pageIndex = 1;
+    private bool _isLoading;
+    private string? _statusMessage;
+    private string? _errorMessage;
+    private CancellationTokenSource? _requestCts;
+
+    private PagedResult<ProductionRecordDto> _pageResult = PagedResult<ProductionRecordDto>.Create(Array.Empty<ProductionRecordDto>(), 1, PageSize, 0);
+
+    private int TotalPages => _pageResult.TotalCount == 0
+        ? 1
+        : (int)Math.Ceiling(_pageResult.TotalCount / (double)PageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        SetDefaultRange();
+        await ExecuteQueryAsync();
+    }
+
+    public void Dispose()
+    {
+        _requestCts?.Cancel();
+        _requestCts?.Dispose();
+    }
+
+    private Task QueryFromFirstPageAsync()
+    {
+        _pageIndex = 1;
+        return ExecuteQueryAsync();
+    }
+
+    private async Task ResetAsync()
+    {
+        _machineId = string.Empty;
+        _stationId = string.Empty;
+        _pageIndex = 1;
+        _errorMessage = null;
+        _statusMessage = null;
+        SetDefaultRange();
+        await ExecuteQueryAsync();
+    }
+
+    private async Task PreviousPageAsync()
+    {
+        if (_pageIndex <= 1)
+        {
+            return;
+        }
+
+        _pageIndex--;
+        await ExecuteQueryAsync();
+    }
+
+    private async Task NextPageAsync()
+    {
+        if (_pageIndex >= TotalPages)
+        {
+            return;
+        }
+
+        _pageIndex++;
+        await ExecuteQueryAsync();
+    }
+
+    private async Task ExecuteQueryAsync()
+    {
+        _errorMessage = null;
+        _statusMessage = null;
+
+        if (!TryBuildFilter(out var filter, useCurrentPage: true))
+        {
+            return;
+        }
+
+        _requestCts?.Cancel();
+        _requestCts?.Dispose();
+        _requestCts = new CancellationTokenSource();
+
+        _isLoading = true;
+        try
+        {
+            _pageResult = await DataManageService.QueryAsync(filter, _requestCts.Token);
+
+            if (_pageResult.TotalCount == 0)
+            {
+                _statusMessage = "查询成功，未命中数据。";
+            }
+            else
+            {
+                _statusMessage = $"查询成功，共 {_pageResult.TotalCount} 条。";
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            _statusMessage = "查询已取消。";
+        }
+        catch (Exception exception)
+        {
+            Logger.LogError(exception, "DataManage 页面查询失败。");
+            _errorMessage = $"查询失败：{exception.Message}";
+            _pageResult = PagedResult<ProductionRecordDto>.Create(Array.Empty<ProductionRecordDto>(), _pageIndex, PageSize, 0);
+        }
+        finally
+        {
+            _isLoading = false;
+        }
+    }
+
+    private async Task ExportAsync()
+    {
+        _errorMessage = null;
+        _statusMessage = null;
+
+        if (_isLoading)
+        {
+            return;
+        }
+
+        if (!TryBuildFilter(out var filter, useCurrentPage: false))
+        {
+            return;
+        }
+
+        _isLoading = true;
+        try
+        {
+            var exportResult = await DataManageService.ExportAsync(filter);
+            if (!exportResult.HasData)
+            {
+                _statusMessage = "当前筛选条件无可导出数据。";
+                return;
+            }
+
+            var base64Content = Convert.ToBase64String(exportResult.Content);
+            await JSRuntime.InvokeVoidAsync("downloadFileFromBytes", exportResult.FileName, exportResult.ContentType, base64Content);
+            _statusMessage = $"导出成功，共 {exportResult.RowCount} 行。";
+        }
+        catch (OperationCanceledException)
+        {
+            _statusMessage = "导出已取消。";
+        }
+        catch (Exception exception)
+        {
+            Logger.LogError(exception, "DataManage 页面导出失败。");
+            _errorMessage = $"导出失败：{exception.Message}";
+        }
+        finally
+        {
+            _isLoading = false;
+        }
+    }
+
+    private bool TryBuildFilter(out DataManageQueryFilter filter, bool useCurrentPage)
+    {
+        filter = default!;
+
+        if (!TryParseRange(out var startTime, out var endTime))
+        {
+            return false;
+        }
+
+        if (startTime > endTime)
+        {
+            _errorMessage = "开始时间不能晚于结束时间。";
+            return false;
+        }
+
+        filter = new DataManageQueryFilter
+        {
+            StartTime = startTime,
+            EndTime = endTime,
+            MachineId = _machineId,
+            StationId = _stationId,
+            PageIndex = useCurrentPage ? _pageIndex : 1,
+            PageSize = PageSize
+        };
+
+        return true;
+    }
+
+    /// <summary>
+    /// 解析开始和结束时间，兼容 `datetime-local` 的分钟/秒两种格式。
+    /// Example: `2026-04-07T03:03`、`2026-04-07T03:03:00`
+    /// </summary>
+    private bool TryParseRange(out DateTime startTime, out DateTime endTime)
+    {
+        if (!TryParseDateTimeLocal(_startTimeText, out startTime))
+        {
+            _errorMessage = "开始时间格式无效。";
+            endTime = default;
+            return false;
+        }
+
+        if (!TryParseDateTimeLocal(_endTimeText, out endTime))
+        {
+            _errorMessage = "结束时间格式无效。";
+            return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// 解析 `datetime-local` 文本，支持 `yyyy-MM-ddTHH:mm` 与 `yyyy-MM-ddTHH:mm:ss`。
+    /// </summary>
+    private static bool TryParseDateTimeLocal(string? text, out DateTime value)
+    {
+        value = default;
+
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return false;
+        }
+
+        return DateTime.TryParseExact(
+            text,
+            DateTimeLocalFormats,
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.None,
+            out value);
+    }
+
+    private void SetDefaultRange()
+    {
+        var today = DateTime.Today;
+        _startTimeText = today.ToString("yyyy-MM-ddTHH:mm", CultureInfo.InvariantCulture);
+        _endTimeText = today.AddDays(1).AddSeconds(-1).ToString("yyyy-MM-ddTHH:mm", CultureInfo.InvariantCulture);
+    }
+
+    private void OnStartTimeChanged(ChangeEventArgs args)
+    {
+        _startTimeText = args.Value?.ToString() ?? string.Empty;
+    }
+
+    private void OnEndTimeChanged(ChangeEventArgs args)
+    {
+        _endTimeText = args.Value?.ToString() ?? string.Empty;
+    }
+
+    private void OnMachineChanged(ChangeEventArgs args)
+    {
+        _machineId = args.Value?.ToString() ?? string.Empty;
+    }
+
+    private void OnStationChanged(ChangeEventArgs args)
+    {
+        _stationId = args.Value?.ToString() ?? string.Empty;
+    }
 }

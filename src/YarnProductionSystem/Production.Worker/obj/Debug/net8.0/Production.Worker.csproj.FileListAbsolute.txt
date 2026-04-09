@@ -96,3 +96,4 @@ E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Pr
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Worker\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Worker\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Worker\bin\Debug\net8.0\S7.Net.dll
+E:\WorkProject\国际复合\03_开发\YarnProduction\src\YarnProductionSystem\Production.Worker\bin\Debug\net8.0\System.ClientModel.dll
